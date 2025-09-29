@@ -3564,6 +3564,98 @@
             ],
             "fileTypeVersion": 1,
             "compiledBom": []
+        },
+        {
+            "atomType": "Molecule",
+            "name": "Molecule",
+            "x": 0.7810846560846562,
+            "y": 0.3203342618384401,
+            "uniqueID": "0af1bea0-87c7-437b-a4c4-ad781b02b5f9",
+            "ioValues": [],
+            "topLevel": false,
+            "allAtoms": [
+                {
+                    "atomType": "Output",
+                    "name": "Output",
+                    "x": 0.98,
+                    "y": 0.5,
+                    "uniqueID": "a2089b3a-9418-4428-bba1-7af5309c08a7",
+                    "ioValues": []
+                },
+                {
+                    "atomType": "Input",
+                    "name": "input",
+                    "x": 0.029699999999999997,
+                    "y": 0.31197771587743733,
+                    "uniqueID": "9b8ff385-6438-47be-a416-e1b29a413476",
+                    "ioValues": [],
+                    "type": "geometry"
+                },
+                {
+                    "atomType": "Rotate",
+                    "name": "Rotate",
+                    "x": 0.41468253968253965,
+                    "y": 0.7743732590529249,
+                    "uniqueID": "12dd61a1-f89d-4775-b035-0f1909cde001",
+                    "ioValues": [
+                        {
+                            "name": "x-axis degrees",
+                            "ioValue": 0,
+                            "currentEquation": null
+                        },
+                        {
+                            "name": "y-axis degrees",
+                            "ioValue": -90,
+                            "currentEquation": "-90"
+                        },
+                        {
+                            "name": "z-axis degrees",
+                            "ioValue": -90,
+                            "currentEquation": "-90"
+                        }
+                    ]
+                },
+                {
+                    "atomType": "Move",
+                    "name": "Move",
+                    "x": 0.27645502645502645,
+                    "y": 0.520891364902507,
+                    "uniqueID": "b4dd6a39-8404-49ba-9ec6-b5cd35a5947d",
+                    "ioValues": [
+                        {
+                            "name": "xDist",
+                            "ioValue": 0,
+                            "currentEquation": null
+                        },
+                        {
+                            "name": "yDist",
+                            "ioValue": -1918,
+                            "currentEquation": "-1918"
+                        },
+                        {
+                            "name": "zDist",
+                            "ioValue": -500,
+                            "currentEquation": "-500"
+                        }
+                    ]
+                }
+            ],
+            "allConnectors": [
+                {
+                    "ap1Name": "number or geometry",
+                    "ap2Name": "geometry",
+                    "ap1ID": "9b8ff385-6438-47be-a416-e1b29a413476",
+                    "ap2ID": "b4dd6a39-8404-49ba-9ec6-b5cd35a5947d"
+                },
+                {
+                    "ap1Name": "geometry",
+                    "ap2Name": "geometry",
+                    "ap1ID": "b4dd6a39-8404-49ba-9ec6-b5cd35a5947d",
+                    "ap2ID": "12dd61a1-f89d-4775-b035-0f1909cde001"
+                }
+            ],
+            "fileTypeVersion": 1,
+            "compiledBom": {}
         }
     ],
     "allConnectors": [
@@ -3602,6 +3694,12 @@
             "ap2Name": "geometry1",
             "ap1ID": "e68cb15d-fca7-46a0-9926-6042f8153748",
             "ap2ID": "a52e6e3e-b85f-438a-9bf3-45d6fb2a04f7"
+        },
+        {
+            "ap1Name": "geometry",
+            "ap2Name": "input",
+            "ap1ID": "a52e6e3e-b85f-438a-9bf3-45d6fb2a04f7",
+            "ap2ID": "0af1bea0-87c7-437b-a4c4-ad781b02b5f9"
         },
         {
             "ap1Name": "geometry or number",
