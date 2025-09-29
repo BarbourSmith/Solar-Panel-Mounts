@@ -25,7 +25,7 @@
                 {
                     "name": "height",
                     "ioValue": 1000,
-                    "currentEquation": "1000"
+                    "currentEquation": null
                 }
             ]
         },
@@ -469,6 +469,64 @@
             ]
         },
         {
+            "atomType": "ExtractTag",
+            "name": "Extract Tag",
+            "x": 0.511904761904762,
+            "y": 0.5682451253481894,
+            "uniqueID": "9ffa98ad-ea89-4818-8ca7-cc921f0e9dfe",
+            "ioValues": [],
+            "tag": "Mount",
+            "tagIndex": 0
+        },
+        {
+            "atomType": "Move",
+            "name": "Move",
+            "x": 0.4232804232804233,
+            "y": 0.796657381615599,
+            "uniqueID": "b62c4fd2-758c-4f08-a334-6b5e6bdacc8f",
+            "ioValues": [
+                {
+                    "name": "xDist",
+                    "ioValue": -500,
+                    "currentEquation": null
+                },
+                {
+                    "name": "yDist",
+                    "ioValue": 0,
+                    "currentEquation": null
+                },
+                {
+                    "name": "zDist",
+                    "ioValue": 0,
+                    "currentEquation": null
+                }
+            ]
+        },
+        {
+            "atomType": "Move",
+            "name": "Move",
+            "x": 0.6395502645502645,
+            "y": 0.34540389972144847,
+            "uniqueID": "0d5bbe7a-6700-459c-8d2c-0aafd156c3a4",
+            "ioValues": [
+                {
+                    "name": "xDist",
+                    "ioValue": 0,
+                    "currentEquation": null
+                },
+                {
+                    "name": "yDist",
+                    "ioValue": 0,
+                    "currentEquation": null
+                },
+                {
+                    "name": "zDist",
+                    "ioValue": 920,
+                    "currentEquation": null
+                }
+            ]
+        },
+        {
             "atomType": "GitHubMolecule",
             "name": "Corrugated-Roofing-Circle-v2",
             "x": 0.07473544973544974,
@@ -598,7 +656,7 @@
                         {
                             "name": "xDist",
                             "ioValue": 0,
-                            "currentEquation": "0"
+                            "currentEquation": null
                         },
                         {
                             "name": "yDist",
@@ -608,7 +666,7 @@
                         {
                             "name": "zDist",
                             "ioValue": 0,
-                            "currentEquation": "0"
+                            "currentEquation": null
                         }
                     ]
                 },
@@ -839,7 +897,7 @@
                         {
                             "name": "z-axis degrees",
                             "ioValue": 180,
-                            "currentEquation": "180"
+                            "currentEquation": null
                         }
                     ]
                 },
@@ -887,7 +945,7 @@
                         {
                             "name": "z-axis degrees",
                             "ioValue": 180,
-                            "currentEquation": "180"
+                            "currentEquation": null
                         }
                     ]
                 },
@@ -935,7 +993,7 @@
                         {
                             "name": "z-axis degrees",
                             "ioValue": 180,
-                            "currentEquation": "180"
+                            "currentEquation": null
                         }
                     ]
                 }
@@ -1079,6 +1137,17 @@
                     ]
                 },
                 {
+                    "atomType": "Tag",
+                    "name": "Mount",
+                    "x": 0.7698412698412698,
+                    "y": 0.6072423398328691,
+                    "uniqueID": "917f67a9-e9cc-4071-87aa-9c33d3702b64",
+                    "ioValues": [],
+                    "tags": [
+                        "Mount"
+                    ]
+                },
+                {
                     "atomType": "GitHubMolecule",
                     "name": "Rectangle-Rounded",
                     "x": 0.16203703703703703,
@@ -1093,7 +1162,7 @@
                         {
                             "name": "Height",
                             "ioValue": 35,
-                            "currentEquation": "35"
+                            "currentEquation": null
                         },
                         {
                             "name": "Radius",
@@ -1678,17 +1747,6 @@
                     "unitsKey": "MM",
                     "fileTypeVersion": 1,
                     "compiledBom": []
-                },
-                {
-                    "atomType": "Tag",
-                    "name": "Mount",
-                    "x": 0.7698412698412698,
-                    "y": 0.6072423398328691,
-                    "uniqueID": "917f67a9-e9cc-4071-87aa-9c33d3702b64",
-                    "ioValues": [],
-                    "tags": [
-                        "Mount"
-                    ]
                 }
             ],
             "allConnectors": [
@@ -1705,30 +1763,20 @@
                     "ap2ID": "917f67a9-e9cc-4071-87aa-9c33d3702b64"
                 },
                 {
-                    "ap1Name": "geometry or number",
-                    "ap2Name": "geometry",
-                    "ap1ID": "d3efcc8d-b1ca-4676-86cb-24e829ceaedc",
-                    "ap2ID": "656f399c-e310-4f34-9f13-7fb8b0a951ee"
-                },
-                {
                     "ap1Name": "geometry",
                     "ap2Name": "number or geometry",
                     "ap1ID": "917f67a9-e9cc-4071-87aa-9c33d3702b64",
                     "ap2ID": "0384aabb-f3ba-449f-8799-8dea3ee1dbd3"
+                },
+                {
+                    "ap1Name": "geometry or number",
+                    "ap2Name": "geometry",
+                    "ap1ID": "d3efcc8d-b1ca-4676-86cb-24e829ceaedc",
+                    "ap2ID": "656f399c-e310-4f34-9f13-7fb8b0a951ee"
                 }
             ],
             "fileTypeVersion": 1,
             "compiledBom": []
-        },
-        {
-            "atomType": "ExtractTag",
-            "name": "Extract Tag",
-            "x": 0.511904761904762,
-            "y": 0.5682451253481894,
-            "uniqueID": "9ffa98ad-ea89-4818-8ca7-cc921f0e9dfe",
-            "ioValues": [],
-            "tag": "Mount",
-            "tagIndex": 0
         },
         {
             "atomType": "GitHubMolecule",
@@ -2936,50 +2984,21 @@
             "compiledBom": []
         },
         {
-            "atomType": "Move",
-            "name": "Move",
-            "x": 0.4232804232804233,
-            "y": 0.796657381615599,
-            "uniqueID": "b62c4fd2-758c-4f08-a334-6b5e6bdacc8f",
+            "atomType": "Rectangle",
+            "name": "Rectangle",
+            "x": 0.576058201058201,
+            "y": 0.8272980501392758,
+            "uniqueID": "2c56ae3b-4564-4c48-8d19-efd52755bbd3",
             "ioValues": [
                 {
-                    "name": "xDist",
-                    "ioValue": -500,
-                    "currentEquation": "-500"
+                    "name": "x length",
+                    "ioValue": 2000,
+                    "currentEquation": "2000"
                 },
                 {
-                    "name": "yDist",
-                    "ioValue": 0,
-                    "currentEquation": null
-                },
-                {
-                    "name": "zDist",
-                    "ioValue": 0,
-                    "currentEquation": null
-                }
-            ]
-        },
-        {
-            "atomType": "Move",
-            "name": "Move",
-            "x": 0.6395502645502645,
-            "y": 0.34540389972144847,
-            "uniqueID": "0d5bbe7a-6700-459c-8d2c-0aafd156c3a4",
-            "ioValues": [
-                {
-                    "name": "xDist",
-                    "ioValue": 0,
-                    "currentEquation": null
-                },
-                {
-                    "name": "yDist",
-                    "ioValue": 0,
-                    "currentEquation": null
-                },
-                {
-                    "name": "zDist",
-                    "ioValue": 920,
-                    "currentEquation": "920"
+                    "name": "y length",
+                    "ioValue": 2000,
+                    "currentEquation": "2000"
                 }
             ]
         }
@@ -3010,6 +3029,12 @@
             "ap2ID": "0d5bbe7a-6700-459c-8d2c-0aafd156c3a4"
         },
         {
+            "ap1Name": "geometry",
+            "ap2Name": "number or geometry",
+            "ap1ID": "b62c4fd2-758c-4f08-a334-6b5e6bdacc8f",
+            "ap2ID": "79245bb4-4b57-47bb-bdaf-d3f59ffc3ba4"
+        },
+        {
             "ap1Name": "geometry or number",
             "ap2Name": "geometry",
             "ap1ID": "68216f4e-6458-4f29-8bff-73436453ef1b",
@@ -3032,12 +3057,6 @@
             "ap2Name": "Shape 2",
             "ap1ID": "1861ced2-6ff6-4d3f-a685-5963d8b34fc5",
             "ap2ID": "92095621-a37b-4bf5-bd20-28177039366a"
-        },
-        {
-            "ap1Name": "geometry",
-            "ap2Name": "number or geometry",
-            "ap1ID": "b62c4fd2-758c-4f08-a334-6b5e6bdacc8f",
-            "ap2ID": "79245bb4-4b57-47bb-bdaf-d3f59ffc3ba4"
         }
     ],
     "unitsKey": "MM",
