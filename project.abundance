@@ -16,44 +16,6 @@
             "ioValues": []
         },
         {
-            "atomType": "Extrude",
-            "name": "Extrude",
-            "x": 0.18386243386243387,
-            "y": 0.6880222841225626,
-            "uniqueID": "68544da9-a4d5-40df-9561-d57f4469c489",
-            "ioValues": [
-                {
-                    "name": "height",
-                    "ioValue": 1000,
-                    "currentEquation": null
-                }
-            ]
-        },
-        {
-            "atomType": "Rotate",
-            "name": "Rotate",
-            "x": 0.27116402116402116,
-            "y": 0.7381615598885795,
-            "uniqueID": "ff855d1d-4f9c-4b2e-b1f6-5fb6bc2cfbe3",
-            "ioValues": [
-                {
-                    "name": "x-axis degrees",
-                    "ioValue": 0,
-                    "currentEquation": null
-                },
-                {
-                    "name": "y-axis degrees",
-                    "ioValue": 90,
-                    "currentEquation": null
-                },
-                {
-                    "name": "z-axis degrees",
-                    "ioValue": 0,
-                    "currentEquation": null
-                }
-            ]
-        },
-        {
             "atomType": "Assembly",
             "name": "Assembly",
             "x": 0.4834656084656085,
@@ -481,30 +443,6 @@
         {
             "atomType": "Move",
             "name": "Move",
-            "x": 0.4232804232804233,
-            "y": 0.796657381615599,
-            "uniqueID": "b62c4fd2-758c-4f08-a334-6b5e6bdacc8f",
-            "ioValues": [
-                {
-                    "name": "xDist",
-                    "ioValue": -500,
-                    "currentEquation": null
-                },
-                {
-                    "name": "yDist",
-                    "ioValue": 0,
-                    "currentEquation": null
-                },
-                {
-                    "name": "zDist",
-                    "ioValue": 0,
-                    "currentEquation": null
-                }
-            ]
-        },
-        {
-            "atomType": "Move",
-            "name": "Move",
             "x": 0.6395502645502645,
             "y": 0.34540389972144847,
             "uniqueID": "0d5bbe7a-6700-459c-8d2c-0aafd156c3a4",
@@ -527,98 +465,69 @@
             ]
         },
         {
-            "atomType": "GitHubMolecule",
-            "name": "Corrugated-Roofing-Circle-v2",
-            "x": 0.07473544973544974,
-            "y": 0.3537604456824513,
-            "uniqueID": "68216f4e-6458-4f29-8bff-73436453ef1b",
+            "atomType": "Rectangle",
+            "name": "Rectangle",
+            "x": 0.576058201058201,
+            "y": 0.8272980501392758,
+            "uniqueID": "2c56ae3b-4564-4c48-8d19-efd52755bbd3",
             "ioValues": [
                 {
-                    "name": "Number",
-                    "ioValue": 75,
+                    "name": "x length",
+                    "ioValue": 2000,
+                    "currentEquation": null
+                },
+                {
+                    "name": "y length",
+                    "ioValue": 2000,
                     "currentEquation": null
                 }
-            ],
-            "topLevel": false,
-            "allAtoms": [
+            ]
+        },
+        {
+            "atomType": "Extrude",
+            "name": "Extrude",
+            "x": 0.7003968253968255,
+            "y": 0.807799442896936,
+            "uniqueID": "e5484bcd-0531-4198-a86c-38a4aa0028ef",
+            "ioValues": [
                 {
-                    "atomType": "Output",
-                    "name": "Output",
-                    "x": 0.98,
-                    "y": 0.5,
-                    "uniqueID": "6062ddb1-1108-4f28-9d3a-2dbd75f16fb3",
-                    "ioValues": []
-                },
-                {
-                    "atomType": "Code",
-                    "name": "Code",
-                    "x": 0.4708994708994709,
-                    "y": 0.4444444444444444,
-                    "uniqueID": "05d1be1c-afc9-4390-8414-53b7b442c493",
-                    "ioValues": [
-                        {
-                            "name": "number",
-                            "ioValue": 75,
-                            "currentEquation": null
-                        },
-                        {
-                            "name": "height",
-                            "ioValue": 40,
-                            "currentEquation": null
-                        }
-                    ],
-                    "codeVersion": 1,
-                    "code": " \n      //Inputs:[number, height]\n      //This defines the molecules inputs and creates variables with the same names which can be referenced in the code\n      \n      let factor = 2;\n      const period = 76;\n      const amplitude = 19 / 2;\n      const xScale = period / (2 * Math.PI);\n      const nPeriods = number; \n      const circumference = nPeriods * period;\n      const radius = circumference/(2*Math.PI);\n      const angle = 35\n\n      function computeX(fraction){\n        const theta = 2 * Math.PI *fraction; // angle in radians\n        const x = radius*Math.cos(theta);\n        return x;\n      }\n\n      function computeY(fraction){\n        const theta = 2 * Math.PI * fraction; // angle in radians\n        const y = radius*Math.sin(theta);\n        return y;\n      }\n\n      function tangentAngle(fraction, clockwise = false) {\n          const theta = 2 * Math.PI * fraction;\n          const phi = clockwise\n              ? theta - Math.PI / 2 // CW\n              : theta + Math.PI / 2; // CCW\n\n          let degrees = phi * (180 / Math.PI);\n        \n          return degrees; // radians\n      }\n      \n      let shape = replicad.draw();\n\n      \n      shape.movePointerTo([computeX(0), computeY(0)])\n      \n      for (let i = 0; i < nPeriods; i++) {\n        let oneLess = (2*i-1)/(2*number);\n        let fractionStart = i/number //The percentage of the way around the circle that this point is\n        let fractionMiddle =  (2*i+1)/(2*number);\n      \n        // First spline: 0 to ÃÂ (up and back down)\n        shape = shape.smoothSplineTo(\n          [computeX(fractionStart), computeY(fractionStart)],\n          {\n            startTangent: tangentAngle(oneLess) + angle,         // Going up at start\n            startFactor: factor,\n            endTangent: tangentAngle(fractionStart)-angle,          // Coming down at ÃÂ\n            endFactor: factor\n          }\n        )\n        // Second spline: ÃÂ to 2ÃÂ (down and back up)\n        .smoothSplineTo(\n          [computeX(fractionMiddle), computeY(fractionMiddle)],\n          {\n            startTangent: tangentAngle(fractionStart)-angle,        // Going down at ÃÂ\n            startFactor: factor,\n            endTangent: tangentAngle(fractionMiddle) + angle,           // Coming up at 2ÃÂ\n            endFactor: factor\n          }\n        );\n      }\n\n      shape = shape.smoothSplineTo(\n          [computeX(0), computeY(0)],\n          {\n            startTangent: tangentAngle((2*number-1)/(2*number))+angle,        // Going down at ÃÂ\n            startFactor: factor,\n            endTangent: tangentAngle(0) - angle,           // Coming up at 2ÃÂ\n            endFactor: factor\n          });\n      \n      // Add base lines and close shape\n      shape = shape\n        .close();                          // Close path\n\n      const newPlane = new replicad.Plane().pivot(0, 'Y');\n      \n      //For our new geometry we need to define the tags, color, plane, etc\n      let shape2 = {\n          geometry: [shape], \n          tags: [\"aTag\"],\n          color: '#A3CE5B',\n          plane: newPlane,\n          bom: []\n      }\n      \n      //Then we can return our created shape in just the same way\n      return shape2\n      "
-                },
-                {
-                    "atomType": "Input",
-                    "name": "Number",
-                    "x": 0.029699999999999997,
-                    "y": 0.39444444444444443,
-                    "uniqueID": "e87786bf-bdbc-45d1-ad4b-1d3568f8661a",
-                    "ioValues": [],
-                    "type": "number"
+                    "name": "height",
+                    "ioValue": 500,
+                    "currentEquation": null
                 }
-            ],
-            "allConnectors": [
+            ]
+        },
+        {
+            "atomType": "Move",
+            "name": "Move",
+            "x": 0.8062169312169312,
+            "y": 0.8328690807799443,
+            "uniqueID": "38ab5ae3-1bce-43cd-818d-63e7dc227536",
+            "ioValues": [
                 {
-                    "ap1Name": "output",
-                    "ap2Name": "number or geometry",
-                    "ap1ID": "05d1be1c-afc9-4390-8414-53b7b442c493",
-                    "ap2ID": "6062ddb1-1108-4f28-9d3a-2dbd75f16fb3"
+                    "name": "xDist",
+                    "ioValue": 1200,
+                    "currentEquation": null
                 },
                 {
-                    "ap1Name": "number or geometry",
-                    "ap2Name": "number",
-                    "ap1ID": "e87786bf-bdbc-45d1-ad4b-1d3568f8661a",
-                    "ap2ID": "05d1be1c-afc9-4390-8414-53b7b442c493"
+                    "name": "yDist",
+                    "ioValue": 0,
+                    "currentEquation": null
+                },
+                {
+                    "name": "zDist",
+                    "ioValue": 700,
+                    "currentEquation": null
                 }
-            ],
-            "parentRepo": {
-                "lastFoundGit": "2025-09-28T15:47:14.733Z",
-                "privateRepo": false,
-                "repoName": "Corrugated-Roofing-Circle-v2",
-                "dateCreated": "2025-07-11T20:40:29Z",
-                "readMe": "https://raw.githubusercontent.com/BarbourSmith/Corrugated-Roofing-Circle-v2/master/README.md?sanitize=true",
-                "yyyy": 2025,
-                "topMoleculeID": "74e97323-dbcf-4577-bf9a-c3bca8a2acee",
-                "githubMoleculesUsed": [],
-                "html_url": "https://github.com/BarbourSmith/Corrugated-Roofing-Circle-v2",
-                "topics": [],
-                "parentRepo": null,
-                "forks": 0,
-                "dateModified": "739468",
-                "ranking": 0,
-                "searchField": "corrugated-roofing-circle-v2 barboursmith this project recreates the corrugated roofing circle using splines instead of a sampled function which is hopefully more performant ",
-                "owner": "BarbourSmith",
-                "description": "This project recreates the corrugated roofing circle using splines instead of a sampled function which is hopefully more performant",
-                "contentURL": "https://raw.githubusercontent.com/BarbourSmith/Corrugated-Roofing-Circle-v2/master/project.abundance?sanitize=true",
-                "svgURL": "https://raw.githubusercontent.com/BarbourSmith/Corrugated-Roofing-Circle-v2/master/project.svg?sanitize=true",
-                "isLocal": false
-            },
-            "unitsKey": "Unitless",
-            "fileTypeVersion": 1,
-            "compiledBom": []
+            ]
+        },
+        {
+            "atomType": "Intersection",
+            "name": "Intersection",
+            "x": 0.8525132275132274,
+            "y": 0.4317548746518106,
+            "uniqueID": "02c54223-4fe5-42e1-9782-fdc7396e1d3b",
+            "ioValues": []
         },
         {
             "atomType": "Molecule",
@@ -2984,84 +2893,658 @@
             "compiledBom": []
         },
         {
-            "atomType": "Rectangle",
-            "name": "Rectangle",
-            "x": 0.576058201058201,
-            "y": 0.8272980501392758,
-            "uniqueID": "2c56ae3b-4564-4c48-8d19-efd52755bbd3",
+            "atomType": "Molecule",
+            "name": "Envlope",
+            "x": 0.06613756613756615,
+            "y": 0.6350974930362118,
+            "uniqueID": "9d7d3bda-a39f-42ec-9dfc-3385a6d66bf8",
             "ioValues": [
                 {
-                    "name": "x length",
-                    "ioValue": 2000,
-                    "currentEquation": "2000"
-                },
-                {
-                    "name": "y length",
-                    "ioValue": 2000,
-                    "currentEquation": "2000"
-                }
-            ]
-        },
-        {
-            "atomType": "Extrude",
-            "name": "Extrude",
-            "x": 0.7003968253968255,
-            "y": 0.807799442896936,
-            "uniqueID": "e5484bcd-0531-4198-a86c-38a4aa0028ef",
-            "ioValues": [
-                {
-                    "name": "height",
-                    "ioValue": 500,
-                    "currentEquation": "500"
-                }
-            ]
-        },
-        {
-            "atomType": "Move",
-            "name": "Move",
-            "x": 0.8062169312169312,
-            "y": 0.8328690807799443,
-            "uniqueID": "38ab5ae3-1bce-43cd-818d-63e7dc227536",
-            "ioValues": [
-                {
-                    "name": "xDist",
-                    "ioValue": 1200,
-                    "currentEquation": "1200"
-                },
-                {
-                    "name": "yDist",
-                    "ioValue": 0,
+                    "name": "Height",
+                    "ioValue": 2438.4,
                     "currentEquation": null
+                }
+            ],
+            "topLevel": false,
+            "allAtoms": [
+                {
+                    "atomType": "Output",
+                    "name": "Output",
+                    "x": 0.98,
+                    "y": 0.5,
+                    "uniqueID": "671ebf0e-5602-4ab7-9e55-19aa425f0c7f",
+                    "ioValues": []
                 },
                 {
-                    "name": "zDist",
-                    "ioValue": 700,
-                    "currentEquation": "700"
+                    "atomType": "Readme",
+                    "name": "README",
+                    "x": 0.884920634920635,
+                    "y": 0.8805555555555555,
+                    "uniqueID": "7b118315-db20-4c3a-8872-df0b91bcd316",
+                    "ioValues": [],
+                    "readMeText": "Readme text here",
+                    "global": true
+                },
+                {
+                    "atomType": "Readme",
+                    "name": "README",
+                    "x": 0.03835978835978836,
+                    "y": 0.55,
+                    "uniqueID": "7e59eb72-43e0-42e2-9cb9-8c2506275a00",
+                    "ioValues": [],
+                    "readMeText": "Readme text here",
+                    "global": true
+                },
+                {
+                    "atomType": "Circle",
+                    "name": "Circle",
+                    "x": 0.07208994708994709,
+                    "y": 0.2722222222222222,
+                    "uniqueID": "50a9e344-c784-482e-ba48-a5af03a236f8",
+                    "ioValues": [
+                        {
+                            "name": "diameter",
+                            "ioValue": 1828.8,
+                            "currentEquation": null
+                        }
+                    ]
+                },
+                {
+                    "atomType": "Move",
+                    "name": "Move",
+                    "x": 0.5112433862433863,
+                    "y": 0.1309192200557103,
+                    "uniqueID": "2c851af2-c8f5-4b9a-9d54-64e32949a8c9",
+                    "ioValues": [
+                        {
+                            "name": "xDist",
+                            "ioValue": 0,
+                            "currentEquation": null
+                        },
+                        {
+                            "name": "yDist",
+                            "ioValue": 1000,
+                            "currentEquation": null
+                        },
+                        {
+                            "name": "zDist",
+                            "ioValue": 0,
+                            "currentEquation": null
+                        }
+                    ]
+                },
+                {
+                    "atomType": "Circle",
+                    "name": "Circle",
+                    "x": 0.04634397528321318,
+                    "y": 0.7333333333333334,
+                    "uniqueID": "2e1c373c-9176-4629-b9f4-2a36bd6a4248",
+                    "ioValues": [
+                        {
+                            "name": "diameter",
+                            "ioValue": 2205,
+                            "currentEquation": null
+                        }
+                    ]
+                },
+                {
+                    "atomType": "Extrude",
+                    "name": "Extrude",
+                    "x": 0.861111111111111,
+                    "y": 0.15598885793871867,
+                    "uniqueID": "4cff6655-1356-4723-99e2-83cc6454ce61",
+                    "ioValues": [
+                        {
+                            "name": "height",
+                            "ioValue": 2438.4,
+                            "currentEquation": null
+                        }
+                    ]
+                },
+                {
+                    "atomType": "Move",
+                    "name": "Move",
+                    "x": 0.6884920634920635,
+                    "y": 0.5710306406685237,
+                    "uniqueID": "216cf424-3b73-4a6a-ad9e-b16064d5a946",
+                    "ioValues": [
+                        {
+                            "name": "xDist",
+                            "ioValue": 1709.6,
+                            "currentEquation": null
+                        },
+                        {
+                            "name": "yDist",
+                            "ioValue": -65.4,
+                            "currentEquation": null
+                        },
+                        {
+                            "name": "zDist",
+                            "ioValue": 0,
+                            "currentEquation": null
+                        }
+                    ]
+                },
+                {
+                    "atomType": "Move",
+                    "name": "Move",
+                    "x": 0.8022486772486772,
+                    "y": 0.8272980501392758,
+                    "uniqueID": "6f5dd904-9d07-4e7f-91ce-0280fdc4c7e2",
+                    "ioValues": [
+                        {
+                            "name": "xDist",
+                            "ioValue": -1709.6,
+                            "currentEquation": null
+                        },
+                        {
+                            "name": "yDist",
+                            "ioValue": -65.4,
+                            "currentEquation": null
+                        },
+                        {
+                            "name": "zDist",
+                            "ioValue": 0,
+                            "currentEquation": null
+                        }
+                    ]
+                },
+                {
+                    "atomType": "Rectangle",
+                    "name": "Rectangle",
+                    "x": 0.371031746031746,
+                    "y": 0.44568245125348194,
+                    "uniqueID": "b33ff926-a8ac-4e50-8e20-60759c18db70",
+                    "ioValues": [
+                        {
+                            "name": "x length",
+                            "ioValue": 1600,
+                            "currentEquation": null
+                        },
+                        {
+                            "name": "y length",
+                            "ioValue": 800,
+                            "currentEquation": null
+                        }
+                    ]
+                },
+                {
+                    "atomType": "Move",
+                    "name": "Move",
+                    "x": 0.49007936507936506,
+                    "y": 0.4094707520891365,
+                    "uniqueID": "fd65d427-d59e-4337-be0b-561d94c67b38",
+                    "ioValues": [
+                        {
+                            "name": "xDist",
+                            "ioValue": 0,
+                            "currentEquation": null
+                        },
+                        {
+                            "name": "yDist",
+                            "ioValue": 400,
+                            "currentEquation": null
+                        },
+                        {
+                            "name": "zDist",
+                            "ioValue": 0,
+                            "currentEquation": null
+                        }
+                    ]
+                },
+                {
+                    "atomType": "Fusion",
+                    "name": "Fusion",
+                    "x": 0.5998677248677249,
+                    "y": 0.37047353760445684,
+                    "uniqueID": "3d573b63-404f-4902-a166-50a94cc4d306",
+                    "ioValues": [
+                        {
+                            "name": "Shape 1",
+                            "ioValue": {
+                                "geometry": "move-rectangle-1600-800-0-400-0",
+                                "dimension": "2D",
+                                "plane": {
+                                    "origin": [
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "xDir": [
+                                        1,
+                                        0,
+                                        0
+                                    ],
+                                    "normal": [
+                                        0,
+                                        0,
+                                        1
+                                    ]
+                                },
+                                "color": "#aad7f2",
+                                "tags": [],
+                                "bom": []
+                            }
+                        },
+                        {
+                            "name": "Shape 2",
+                            "ioValue": {
+                                "geometry": "move-rotate-singular-41-0-0--90-0-1000-0",
+                                "tags": [
+                                    "aTag"
+                                ],
+                                "color": "#A3CE5B",
+                                "plane": {
+                                    "origin": [
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "xDir": [
+                                        1,
+                                        0,
+                                        0
+                                    ],
+                                    "normal": [
+                                        0,
+                                        0,
+                                        1
+                                    ]
+                                },
+                                "bom": [],
+                                "dimension": "2D"
+                            }
+                        }
+                    ],
+                    "unionType": "Fusion"
+                },
+                {
+                    "atomType": "Rotate",
+                    "name": "Rotate",
+                    "x": 0.544973544973545,
+                    "y": 0.6100278551532033,
+                    "uniqueID": "bc109207-fb3e-4fe7-a15f-ab82baa18c38",
+                    "ioValues": [
+                        {
+                            "name": "x-axis degrees",
+                            "ioValue": 0,
+                            "currentEquation": null
+                        },
+                        {
+                            "name": "y-axis degrees",
+                            "ioValue": 0,
+                            "currentEquation": null
+                        },
+                        {
+                            "name": "z-axis degrees",
+                            "ioValue": -0.2,
+                            "currentEquation": null
+                        }
+                    ]
+                },
+                {
+                    "atomType": "Difference",
+                    "name": "Difference",
+                    "x": 0.7771164021164021,
+                    "y": 0.38718662952646243,
+                    "uniqueID": "9f786378-665c-401d-abc6-dc8478495f95",
+                    "ioValues": []
+                },
+                {
+                    "atomType": "Rotate",
+                    "name": "Rotate",
+                    "x": 0.5740740740740741,
+                    "y": 0.8690807799442898,
+                    "uniqueID": "0c20c4a7-d7f3-4e54-9977-2b8f00fdeb37",
+                    "ioValues": [
+                        {
+                            "name": "x-axis degrees",
+                            "ioValue": 0,
+                            "currentEquation": null
+                        },
+                        {
+                            "name": "y-axis degrees",
+                            "ioValue": 0,
+                            "currentEquation": null
+                        },
+                        {
+                            "name": "z-axis degrees",
+                            "ioValue": 0.2,
+                            "currentEquation": null
+                        }
+                    ]
+                },
+                {
+                    "atomType": "Difference",
+                    "name": "Difference",
+                    "x": 0.8723544973544973,
+                    "y": 0.5766016713091923,
+                    "uniqueID": "8700a6bd-5d35-4c08-94d4-d205b465fd65",
+                    "ioValues": []
+                },
+                {
+                    "atomType": "Input",
+                    "name": "Height",
+                    "x": 0.029699999999999997,
+                    "y": 0.39444444444444443,
+                    "uniqueID": "e7126323-7a8f-4625-ac69-1482753aded1",
+                    "ioValues": [],
+                    "type": "number"
+                },
+                {
+                    "atomType": "Rotate",
+                    "name": "Rotate",
+                    "x": 0.223480947476828,
+                    "y": 0.27298050139275765,
+                    "uniqueID": "8e15163f-288e-4f54-abf2-ddc2e2e55b69",
+                    "ioValues": [
+                        {
+                            "name": "x-axis degrees",
+                            "ioValue": 0,
+                            "currentEquation": null
+                        },
+                        {
+                            "name": "y-axis degrees",
+                            "ioValue": 0,
+                            "currentEquation": null
+                        },
+                        {
+                            "name": "z-axis degrees",
+                            "ioValue": -90,
+                            "currentEquation": null
+                        }
+                    ]
+                },
+                {
+                    "atomType": "GitHubMolecule",
+                    "name": "Corrugated-Roofing-Circle-v2",
+                    "x": 0.164021164021164,
+                    "y": 0.5710306406685237,
+                    "uniqueID": "d22b925e-e8c8-4794-a16e-07cda5fec283",
+                    "ioValues": [
+                        {
+                            "name": "Number",
+                            "ioValue": 75,
+                            "currentEquation": null
+                        }
+                    ],
+                    "topLevel": false,
+                    "allAtoms": [
+                        {
+                            "atomType": "Output",
+                            "name": "Output",
+                            "x": 0.98,
+                            "y": 0.5,
+                            "uniqueID": "0c06fd9c-ac40-47d0-830f-071ac83e8c3d",
+                            "ioValues": []
+                        },
+                        {
+                            "atomType": "Code",
+                            "name": "Code",
+                            "x": 0.4708994708994709,
+                            "y": 0.4444444444444444,
+                            "uniqueID": "d78b4de1-dc8a-4cc5-8575-423cebd23f79",
+                            "ioValues": [
+                                {
+                                    "name": "number",
+                                    "ioValue": 75,
+                                    "currentEquation": null
+                                },
+                                {
+                                    "name": "height",
+                                    "ioValue": 40,
+                                    "currentEquation": null
+                                }
+                            ],
+                            "codeVersion": 1,
+                            "code": " \n      //Inputs:[number, height]\n      //This defines the molecules inputs and creates variables with the same names which can be referenced in the code\n      \n      let factor = 2;\n      const period = 76;\n      const amplitude = 19 / 2;\n      const xScale = period / (2 * Math.PI);\n      const nPeriods = number; \n      const circumference = nPeriods * period;\n      const radius = circumference/(2*Math.PI);\n      const angle = 35\n\n      function computeX(fraction){\n        const theta = 2 * Math.PI *fraction; // angle in radians\n        const x = radius*Math.cos(theta);\n        return x;\n      }\n\n      function computeY(fraction){\n        const theta = 2 * Math.PI * fraction; // angle in radians\n        const y = radius*Math.sin(theta);\n        return y;\n      }\n\n      function tangentAngle(fraction, clockwise = false) {\n          const theta = 2 * Math.PI * fraction;\n          const phi = clockwise\n              ? theta - Math.PI / 2 // CW\n              : theta + Math.PI / 2; // CCW\n\n          let degrees = phi * (180 / Math.PI);\n        \n          return degrees; // radians\n      }\n      \n      let shape = replicad.draw();\n\n      \n      shape.movePointerTo([computeX(0), computeY(0)])\n      \n      for (let i = 0; i < nPeriods; i++) {\n        let oneLess = (2*i-1)/(2*number);\n        let fractionStart = i/number //The percentage of the way around the circle that this point is\n        let fractionMiddle =  (2*i+1)/(2*number);\n      \n        // First spline: 0 to ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ (up and back down)\n        shape = shape.smoothSplineTo(\n          [computeX(fractionStart), computeY(fractionStart)],\n          {\n            startTangent: tangentAngle(oneLess) + angle,         // Going up at start\n            startFactor: factor,\n            endTangent: tangentAngle(fractionStart)-angle,          // Coming down at ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ\n            endFactor: factor\n          }\n        )\n        // Second spline: ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ to 2ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ (down and back up)\n        .smoothSplineTo(\n          [computeX(fractionMiddle), computeY(fractionMiddle)],\n          {\n            startTangent: tangentAngle(fractionStart)-angle,        // Going down at ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ\n            startFactor: factor,\n            endTangent: tangentAngle(fractionMiddle) + angle,           // Coming up at 2ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ\n            endFactor: factor\n          }\n        );\n      }\n\n      shape = shape.smoothSplineTo(\n          [computeX(0), computeY(0)],\n          {\n            startTangent: tangentAngle((2*number-1)/(2*number))+angle,        // Going down at ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ\n            startFactor: factor,\n            endTangent: tangentAngle(0) - angle,           // Coming up at 2ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ\n            endFactor: factor\n          });\n      \n      // Add base lines and close shape\n      shape = shape\n        .close();                          // Close path\n\n      const newPlane = new replicad.Plane().pivot(0, 'Y');\n      \n      //For our new geometry we need to define the tags, color, plane, etc\n      let shape2 = {\n          geometry: [shape], \n          tags: [\"aTag\"],\n          color: '#A3CE5B',\n          plane: newPlane,\n          bom: []\n      }\n      \n      //Then we can return our created shape in just the same way\n      return shape2\n      "
+                        },
+                        {
+                            "atomType": "Input",
+                            "name": "Number",
+                            "x": 0.029699999999999997,
+                            "y": 0.39444444444444443,
+                            "uniqueID": "bc83143b-6465-41ee-a216-b6914aafacf1",
+                            "ioValues": [],
+                            "type": "number"
+                        }
+                    ],
+                    "allConnectors": [
+                        {
+                            "ap1Name": "output",
+                            "ap2Name": "number or geometry",
+                            "ap1ID": "d78b4de1-dc8a-4cc5-8575-423cebd23f79",
+                            "ap2ID": "0c06fd9c-ac40-47d0-830f-071ac83e8c3d"
+                        },
+                        {
+                            "ap1Name": "number or geometry",
+                            "ap2Name": "number",
+                            "ap1ID": "bc83143b-6465-41ee-a216-b6914aafacf1",
+                            "ap2ID": "d78b4de1-dc8a-4cc5-8575-423cebd23f79"
+                        }
+                    ],
+                    "parentRepo": {
+                        "privateRepo": false,
+                        "repoName": "Corrugated-Roofing-Circle-v2",
+                        "dateCreated": "2025-07-11T20:40:29Z",
+                        "readMe": "https://raw.githubusercontent.com/BarbourSmith/Corrugated-Roofing-Circle-v2/master/README.md?sanitize=true",
+                        "yyyy": 2025,
+                        "topMoleculeID": "74e97323-dbcf-4577-bf9a-c3bca8a2acee",
+                        "githubMoleculesUsed": [],
+                        "html_url": "https://github.com/BarbourSmith/Corrugated-Roofing-Circle-v2",
+                        "topics": [],
+                        "parentRepo": null,
+                        "forks": 0,
+                        "dateModified": "739455",
+                        "ranking": 0,
+                        "searchField": "corrugated-roofing-circle-v2 barboursmith this project recreates the corrugated roofing circle using splines instead of a sampled function which is hopefully more performant ",
+                        "owner": "BarbourSmith",
+                        "description": "This project recreates the corrugated roofing circle using splines instead of a sampled function which is hopefully more performant",
+                        "contentURL": "https://raw.githubusercontent.com/BarbourSmith/Corrugated-Roofing-Circle-v2/master/project.abundance?sanitize=true",
+                        "svgURL": "https://raw.githubusercontent.com/BarbourSmith/Corrugated-Roofing-Circle-v2/master/project.svg?sanitize=true",
+                        "isLocal": false
+                    },
+                    "unitsKey": "Unitless",
+                    "fileTypeVersion": 1,
+                    "compiledBom": []
+                },
+                {
+                    "atomType": "GitHubMolecule",
+                    "name": "Corrugated-Roofing-Circle-v2",
+                    "x": 0.11904761904761904,
+                    "y": 0.818941504178273,
+                    "uniqueID": "1064b1a5-54df-4766-9219-377a1eac6a52",
+                    "ioValues": [
+                        {
+                            "name": "Number",
+                            "ioValue": 92,
+                            "currentEquation": null
+                        }
+                    ],
+                    "topLevel": false,
+                    "allAtoms": [
+                        {
+                            "atomType": "Output",
+                            "name": "Output",
+                            "x": 0.98,
+                            "y": 0.5,
+                            "uniqueID": "1b721563-5337-4acd-a891-7d896e6995a8",
+                            "ioValues": []
+                        },
+                        {
+                            "atomType": "Code",
+                            "name": "Code",
+                            "x": 0.4708994708994709,
+                            "y": 0.4444444444444444,
+                            "uniqueID": "cda845bc-5138-4360-ab59-657fcfd0388e",
+                            "ioValues": [
+                                {
+                                    "name": "number",
+                                    "ioValue": 92,
+                                    "currentEquation": null
+                                },
+                                {
+                                    "name": "height",
+                                    "ioValue": 40,
+                                    "currentEquation": null
+                                }
+                            ],
+                            "codeVersion": 1,
+                            "code": " \n      //Inputs:[number, height]\n      //This defines the molecules inputs and creates variables with the same names which can be referenced in the code\n      \n      let factor = 2;\n      const period = 76;\n      const amplitude = 19 / 2;\n      const xScale = period / (2 * Math.PI);\n      const nPeriods = number; \n      const circumference = nPeriods * period;\n      const radius = circumference/(2*Math.PI);\n      const angle = 35\n\n      function computeX(fraction){\n        const theta = 2 * Math.PI *fraction; // angle in radians\n        const x = radius*Math.cos(theta);\n        return x;\n      }\n\n      function computeY(fraction){\n        const theta = 2 * Math.PI * fraction; // angle in radians\n        const y = radius*Math.sin(theta);\n        return y;\n      }\n\n      function tangentAngle(fraction, clockwise = false) {\n          const theta = 2 * Math.PI * fraction;\n          const phi = clockwise\n              ? theta - Math.PI / 2 // CW\n              : theta + Math.PI / 2; // CCW\n\n          let degrees = phi * (180 / Math.PI);\n        \n          return degrees; // radians\n      }\n      \n      let shape = replicad.draw();\n\n      \n      shape.movePointerTo([computeX(0), computeY(0)])\n      \n      for (let i = 0; i < nPeriods; i++) {\n        let oneLess = (2*i-1)/(2*number);\n        let fractionStart = i/number //The percentage of the way around the circle that this point is\n        let fractionMiddle =  (2*i+1)/(2*number);\n      \n        // First spline: 0 to ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ (up and back down)\n        shape = shape.smoothSplineTo(\n          [computeX(fractionStart), computeY(fractionStart)],\n          {\n            startTangent: tangentAngle(oneLess) + angle,         // Going up at start\n            startFactor: factor,\n            endTangent: tangentAngle(fractionStart)-angle,          // Coming down at ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ\n            endFactor: factor\n          }\n        )\n        // Second spline: ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ to 2ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ (down and back up)\n        .smoothSplineTo(\n          [computeX(fractionMiddle), computeY(fractionMiddle)],\n          {\n            startTangent: tangentAngle(fractionStart)-angle,        // Going down at ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ\n            startFactor: factor,\n            endTangent: tangentAngle(fractionMiddle) + angle,           // Coming up at 2ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ\n            endFactor: factor\n          }\n        );\n      }\n\n      shape = shape.smoothSplineTo(\n          [computeX(0), computeY(0)],\n          {\n            startTangent: tangentAngle((2*number-1)/(2*number))+angle,        // Going down at ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ\n            startFactor: factor,\n            endTangent: tangentAngle(0) - angle,           // Coming up at 2ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ\n            endFactor: factor\n          });\n      \n      // Add base lines and close shape\n      shape = shape\n        .close();                          // Close path\n\n      const newPlane = new replicad.Plane().pivot(0, 'Y');\n      \n      //For our new geometry we need to define the tags, color, plane, etc\n      let shape2 = {\n          geometry: [shape], \n          tags: [\"aTag\"],\n          color: '#A3CE5B',\n          plane: newPlane,\n          bom: []\n      }\n      \n      //Then we can return our created shape in just the same way\n      return shape2\n      "
+                        },
+                        {
+                            "atomType": "Input",
+                            "name": "Number",
+                            "x": 0.029699999999999997,
+                            "y": 0.39444444444444443,
+                            "uniqueID": "cd2e55a1-e0c8-49e5-afd1-7e458892cd67",
+                            "ioValues": [],
+                            "type": "number"
+                        }
+                    ],
+                    "allConnectors": [
+                        {
+                            "ap1Name": "output",
+                            "ap2Name": "number or geometry",
+                            "ap1ID": "cda845bc-5138-4360-ab59-657fcfd0388e",
+                            "ap2ID": "1b721563-5337-4acd-a891-7d896e6995a8"
+                        },
+                        {
+                            "ap1Name": "number or geometry",
+                            "ap2Name": "number",
+                            "ap1ID": "cd2e55a1-e0c8-49e5-afd1-7e458892cd67",
+                            "ap2ID": "cda845bc-5138-4360-ab59-657fcfd0388e"
+                        }
+                    ],
+                    "parentRepo": {
+                        "privateRepo": false,
+                        "repoName": "Corrugated-Roofing-Circle-v2",
+                        "dateCreated": "2025-07-11T20:40:29Z",
+                        "readMe": "https://raw.githubusercontent.com/BarbourSmith/Corrugated-Roofing-Circle-v2/master/README.md?sanitize=true",
+                        "yyyy": 2025,
+                        "topMoleculeID": "74e97323-dbcf-4577-bf9a-c3bca8a2acee",
+                        "githubMoleculesUsed": [],
+                        "html_url": "https://github.com/BarbourSmith/Corrugated-Roofing-Circle-v2",
+                        "topics": [],
+                        "parentRepo": null,
+                        "forks": 0,
+                        "dateModified": "739455",
+                        "ranking": 0,
+                        "searchField": "corrugated-roofing-circle-v2 barboursmith this project recreates the corrugated roofing circle using splines instead of a sampled function which is hopefully more performant ",
+                        "owner": "BarbourSmith",
+                        "description": "This project recreates the corrugated roofing circle using splines instead of a sampled function which is hopefully more performant",
+                        "contentURL": "https://raw.githubusercontent.com/BarbourSmith/Corrugated-Roofing-Circle-v2/master/project.abundance?sanitize=true",
+                        "svgURL": "https://raw.githubusercontent.com/BarbourSmith/Corrugated-Roofing-Circle-v2/master/project.svg?sanitize=true",
+                        "isLocal": false
+                    },
+                    "unitsKey": "Unitless",
+                    "fileTypeVersion": 1,
+                    "compiledBom": []
                 }
-            ]
-        },
-        {
-            "atomType": "Intersection",
-            "name": "Intersection",
-            "x": 0.8525132275132274,
-            "y": 0.4317548746518106,
-            "uniqueID": "02c54223-4fe5-42e1-9782-fdc7396e1d3b",
-            "ioValues": []
+            ],
+            "allConnectors": [
+                {
+                    "ap1Name": "geometry",
+                    "ap2Name": "Shape 2",
+                    "ap1ID": "2c851af2-c8f5-4b9a-9d54-64e32949a8c9",
+                    "ap2ID": "3d573b63-404f-4902-a166-50a94cc4d306"
+                },
+                {
+                    "ap1Name": "geometry",
+                    "ap2Name": "number or geometry",
+                    "ap1ID": "4cff6655-1356-4723-99e2-83cc6454ce61",
+                    "ap2ID": "671ebf0e-5602-4ab7-9e55-19aa425f0c7f"
+                },
+                {
+                    "ap1Name": "geometry",
+                    "ap2Name": "geometry2",
+                    "ap1ID": "216cf424-3b73-4a6a-ad9e-b16064d5a946",
+                    "ap2ID": "9f786378-665c-401d-abc6-dc8478495f95"
+                },
+                {
+                    "ap1Name": "geometry",
+                    "ap2Name": "geometry2",
+                    "ap1ID": "6f5dd904-9d07-4e7f-91ce-0280fdc4c7e2",
+                    "ap2ID": "8700a6bd-5d35-4c08-94d4-d205b465fd65"
+                },
+                {
+                    "ap1Name": "geometry",
+                    "ap2Name": "geometry",
+                    "ap1ID": "b33ff926-a8ac-4e50-8e20-60759c18db70",
+                    "ap2ID": "fd65d427-d59e-4337-be0b-561d94c67b38"
+                },
+                {
+                    "ap1Name": "geometry",
+                    "ap2Name": "Shape 1",
+                    "ap1ID": "fd65d427-d59e-4337-be0b-561d94c67b38",
+                    "ap2ID": "3d573b63-404f-4902-a166-50a94cc4d306"
+                },
+                {
+                    "ap1Name": "geometry",
+                    "ap2Name": "geometry1",
+                    "ap1ID": "3d573b63-404f-4902-a166-50a94cc4d306",
+                    "ap2ID": "9f786378-665c-401d-abc6-dc8478495f95"
+                },
+                {
+                    "ap1Name": "geometry",
+                    "ap2Name": "geometry",
+                    "ap1ID": "bc109207-fb3e-4fe7-a15f-ab82baa18c38",
+                    "ap2ID": "216cf424-3b73-4a6a-ad9e-b16064d5a946"
+                },
+                {
+                    "ap1Name": "geometry",
+                    "ap2Name": "geometry1",
+                    "ap1ID": "9f786378-665c-401d-abc6-dc8478495f95",
+                    "ap2ID": "8700a6bd-5d35-4c08-94d4-d205b465fd65"
+                },
+                {
+                    "ap1Name": "geometry",
+                    "ap2Name": "geometry",
+                    "ap1ID": "0c20c4a7-d7f3-4e54-9977-2b8f00fdeb37",
+                    "ap2ID": "6f5dd904-9d07-4e7f-91ce-0280fdc4c7e2"
+                },
+                {
+                    "ap1Name": "geometry",
+                    "ap2Name": "geometry",
+                    "ap1ID": "8700a6bd-5d35-4c08-94d4-d205b465fd65",
+                    "ap2ID": "4cff6655-1356-4723-99e2-83cc6454ce61"
+                },
+                {
+                    "ap1Name": "number or geometry",
+                    "ap2Name": "height",
+                    "ap1ID": "e7126323-7a8f-4625-ac69-1482753aded1",
+                    "ap2ID": "4cff6655-1356-4723-99e2-83cc6454ce61"
+                },
+                {
+                    "ap1Name": "geometry",
+                    "ap2Name": "geometry",
+                    "ap1ID": "8e15163f-288e-4f54-abf2-ddc2e2e55b69",
+                    "ap2ID": "2c851af2-c8f5-4b9a-9d54-64e32949a8c9"
+                },
+                {
+                    "ap1Name": "geometry or number",
+                    "ap2Name": "geometry",
+                    "ap1ID": "d22b925e-e8c8-4794-a16e-07cda5fec283",
+                    "ap2ID": "8e15163f-288e-4f54-abf2-ddc2e2e55b69"
+                },
+                {
+                    "ap1Name": "geometry or number",
+                    "ap2Name": "geometry",
+                    "ap1ID": "1064b1a5-54df-4766-9219-377a1eac6a52",
+                    "ap2ID": "bc109207-fb3e-4fe7-a15f-ab82baa18c38"
+                },
+                {
+                    "ap1Name": "geometry or number",
+                    "ap2Name": "geometry",
+                    "ap1ID": "1064b1a5-54df-4766-9219-377a1eac6a52",
+                    "ap2ID": "0c20c4a7-d7f3-4e54-9977-2b8f00fdeb37"
+                }
+            ],
+            "fileTypeVersion": 1,
+            "compiledBom": []
         }
     ],
     "allConnectors": [
-        {
-            "ap1Name": "geometry",
-            "ap2Name": "geometry",
-            "ap1ID": "68544da9-a4d5-40df-9561-d57f4469c489",
-            "ap2ID": "ff855d1d-4f9c-4b2e-b1f6-5fb6bc2cfbe3"
-        },
-        {
-            "ap1Name": "geometry",
-            "ap2Name": "geometry",
-            "ap1ID": "ff855d1d-4f9c-4b2e-b1f6-5fb6bc2cfbe3",
-            "ap2ID": "b62c4fd2-758c-4f08-a334-6b5e6bdacc8f"
-        },
         {
             "ap1Name": "geometry",
             "ap2Name": "geometry",
@@ -3073,42 +3556,6 @@
             "ap2Name": "geometry",
             "ap1ID": "92095621-a37b-4bf5-bd20-28177039366a",
             "ap2ID": "0d5bbe7a-6700-459c-8d2c-0aafd156c3a4"
-        },
-        {
-            "ap1Name": "geometry",
-            "ap2Name": "number or geometry",
-            "ap1ID": "b62c4fd2-758c-4f08-a334-6b5e6bdacc8f",
-            "ap2ID": "79245bb4-4b57-47bb-bdaf-d3f59ffc3ba4"
-        },
-        {
-            "ap1Name": "geometry",
-            "ap2Name": "geometry2",
-            "ap1ID": "b62c4fd2-758c-4f08-a334-6b5e6bdacc8f",
-            "ap2ID": "02c54223-4fe5-42e1-9782-fdc7396e1d3b"
-        },
-        {
-            "ap1Name": "geometry or number",
-            "ap2Name": "geometry",
-            "ap1ID": "68216f4e-6458-4f29-8bff-73436453ef1b",
-            "ap2ID": "68544da9-a4d5-40df-9561-d57f4469c489"
-        },
-        {
-            "ap1Name": "geometry or number",
-            "ap2Name": "Shape 1",
-            "ap1ID": "b2f30454-7d0a-46e6-9a9f-2fe2cfe17b45",
-            "ap2ID": "92095621-a37b-4bf5-bd20-28177039366a"
-        },
-        {
-            "ap1Name": "geometry or number",
-            "ap2Name": "input",
-            "ap1ID": "36ef7db9-9eda-4ae3-8de1-95ef9e410128",
-            "ap2ID": "b2f30454-7d0a-46e6-9a9f-2fe2cfe17b45"
-        },
-        {
-            "ap1Name": "geometry or number",
-            "ap2Name": "Shape 2",
-            "ap1ID": "1861ced2-6ff6-4d3f-a685-5963d8b34fc5",
-            "ap2ID": "92095621-a37b-4bf5-bd20-28177039366a"
         },
         {
             "ap1Name": "geometry",
@@ -3127,6 +3574,24 @@
             "ap2Name": "geometry1",
             "ap1ID": "38ab5ae3-1bce-43cd-818d-63e7dc227536",
             "ap2ID": "02c54223-4fe5-42e1-9782-fdc7396e1d3b"
+        },
+        {
+            "ap1Name": "geometry or number",
+            "ap2Name": "Shape 1",
+            "ap1ID": "b2f30454-7d0a-46e6-9a9f-2fe2cfe17b45",
+            "ap2ID": "92095621-a37b-4bf5-bd20-28177039366a"
+        },
+        {
+            "ap1Name": "geometry or number",
+            "ap2Name": "input",
+            "ap1ID": "36ef7db9-9eda-4ae3-8de1-95ef9e410128",
+            "ap2ID": "b2f30454-7d0a-46e6-9a9f-2fe2cfe17b45"
+        },
+        {
+            "ap1Name": "geometry or number",
+            "ap2Name": "Shape 2",
+            "ap1ID": "1861ced2-6ff6-4d3f-a685-5963d8b34fc5",
+            "ap2ID": "92095621-a37b-4bf5-bd20-28177039366a"
         }
     ],
     "unitsKey": "MM",
